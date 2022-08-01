@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="INTCODE" type="xs:string"/>
+  <xs:element name="MATERIAL" type="MATERIALType"/>
+  <xs:complexType name="PARENTType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PARLVL" />
+      <xs:element type="xs:string" name="PARNUM" />
+      <xs:element type="xs:string" name="PARTXT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MARKType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="MARKT" />
+      <xs:element type="xs:string" name="MEAN13" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PLUType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PPC"/>
+      <xs:element type="xs:string" name="MARKT" />
+      <xs:element type="xs:string" name="MPLU" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BOXType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="BOXBAR" />
+      <xs:element  type="xs:string" name="BOXID">
+        <xs:annotation>
+          <xs:documentation>- номер короба</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="BOXMAT">
+        <xs:annotation>
+          <xs:documentation>- доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element  type="xs:string" name="BOXNET">
+        <xs:annotation>
+          <xs:documentation>- доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element  type="xs:string" name="DELPOS">
+        <xs:annotation>
+          <xs:documentation>- доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="MATNR">
+        <xs:annotation>
+          <xs:documentation>- номер строки поставки</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="BATCH">
+        <xs:annotation>
+          <xs:documentation>- код товара</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="ODQUAN">
+        <xs:annotation>
+          <xs:documentation>- партия товара (дата изготовления)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PALLETType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PALBAR" />
+      <xs:element type="xs:string" name="PALID">
+        <xs:annotation>
+          <xs:documentation>- номер паллеты</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="PALMAT">
+        <xs:annotation>
+          <xs:documentation>- доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="PALNET">
+        <xs:annotation>
+          <xs:documentation>- доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="PALBRT">
+        <xs:annotation>
+          <xs:documentation>- доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="BOXType" name="BOX" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>- доп.                - доп.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SDELIVPType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="SDNUM"/>
+      <xs:element type="xs:string" name="STONUM">
+        <xs:annotation>
+          <xs:documentation>- номер поставки САП</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="SDSHIPTO"/>
+      <xs:element type="xs:string" name="STLOC"/>
+      <xs:element type="xs:string" name="STLOCOR">
+        <xs:annotation>
+          <xs:documentation>- код нашего склада в САП</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="PALLETType" name="PALLET" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>- склад-отправитель</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MATERIALType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="MATNR"/>
+      <xs:element type="xs:string" name="MSTAE">
+        <xs:annotation>
+          <xs:documentation>- код товара</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="DELIND"/>
+      <xs:element type="xs:string" name="MATTXT"/>
+      <xs:element type="xs:string" name="MATTYP">
+        <xs:annotation>
+          <xs:documentation>- наименование товара</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="PARENTType" name="PARENT" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="xs:string" name="PACKTYP"/>
+      <xs:element type="xs:string" name="BASEUOM"/>
+      <xs:element type="xs:string" name="TCOND">
+        <xs:annotation>
+          <xs:documentation>- базовая ЕИ (игнорируем)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="ARTIC"/>
+      <xs:element type="xs:string" name="BRAND">
+        <xs:annotation>
+          <xs:documentation>- артикул производителя</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="BRANDT">
+        <xs:annotation>
+          <xs:documentation>- код производителя</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:float" name="NETMASS">
+        <xs:annotation>
+          <xs:documentation>- наименование производителя</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:float" name="PACMASS">
+        <xs:annotation>
+          <xs:documentation>- вес нетто короба</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="NESTAM">
+        <xs:annotation>
+          <xs:documentation>- вес упаковки короба (для расчета брутто)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:integer" name="SHLIFE">
+        <xs:annotation>
+          <xs:documentation>- вложение короба (игнорируем)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="GTIN">
+        <xs:annotation>
+          <xs:documentation>- длина срока годности (в днях)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="MARKType" name="MARK" maxOccurs="unbounded" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>- ШК короба</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="PLUType" name="PLU" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SDELIVP" type="SDELIVPType"/>
+
+<!--
+                    SHIPMENT TASK
+-->
+
+  <xs:element name="ODELIV" type="ODELIVType"/>
+  <xs:complexType name="CLIENTType" >
+    <xs:sequence>
+      <xs:element type="xs:string" name="CLNUM"/>
+      <xs:element type="xs:string" name="MARKTP"/>
+      <xs:element type="xs:string" name="CLTXT"/>
+      <xs:element type="xs:string" name="ADDRTXT"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ODPOSNRType" >
+    <xs:sequence>
+      <xs:element type="xs:string" name="DELPOS" />
+      <xs:element type="xs:string" name="MATNR" />
+      <xs:element type="xs:string" name="PROMO"/>
+      <xs:element type="xs:string" name="EXPMIN"/>
+      <xs:element type="xs:float" name="ODQUAN" />
+      <xs:element type="xs:float" name="ODBOXQUAN" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ODELIVType" >
+    <xs:sequence>
+      <xs:element type="xs:string" name="DELNUM"/>
+      <xs:element type="xs:string" name="STLOC"/>
+      <xs:element type="xs:string" name="PSDATE"/>
+      <xs:element type="xs:string" name="PSTIME"/>
+      <xs:element type="xs:string" name="TOLER"/>
+      <xs:element type="xs:string" name="TOLERL"/>
+      <xs:element type="xs:string" name="SHPNUM"/>
+      <xs:element type="xs:string" name="TRANSPORT"/>
+      <xs:element type="xs:string" name="DRIVER"/>
+      <xs:element type="CLIENTType" name="CLIENT"/>
+      <xs:element type="ODPOSNRType" name="ODPOSNR" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+<!--
+                ВОЗВРАТ
+-->
+
+  <xs:element name="RDELIV" type="RDELIVType"/>
+  <xs:complexType name="SRDPOSType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="STDELIV"/>
+      <xs:element type="xs:string" name="MATNR">
+        <xs:annotation>
+          <xs:documentation>- номер строки возврата</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="QUAN">
+        <xs:annotation>
+          <xs:documentation>- код товара</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:float" name="BOXQUAN"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RDELIVType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="DELNUM"/>
+      <xs:element type="xs:string" name="SRDELIV">
+        <xs:annotation>
+          <xs:documentation>- номер Заказа на отбор WMS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="SRDATE">
+        <xs:annotation>
+          <xs:documentation>- номер возвратной поставки САП</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="STLOC">
+        <xs:annotation>
+          <xs:documentation>- ожидаемая дата поставкивозврата</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element type="xs:string" name="CLNUM">
+        <xs:annotation>
+          <xs:documentation>- код нашего склада в САП</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+
+      <xs:element type="SRDPOSType" name="SRDPOS" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>- код клиента - количество коробов (округляем математически)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

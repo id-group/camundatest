@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="БрокерскийОтчет" type="БрокерскийОтчетType"/>
+    <xs:complexType name="ШапкаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Заголовок"/>
+                <xs:attribute type="xs:string" name="НаименованиеКомпании"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаПериодType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Период"/>
+                <xs:attribute type="xs:string" name="НачПериода"/>
+                <xs:attribute type="xs:string" name="КонПериода"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаКлиентType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Клиент"/>
+                <xs:attribute type="xs:string" name="Субъект"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаГенСогType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ГенеральноеCоглашение"/>
+                <xs:attribute type="xs:string" name="Клиент"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСубсчетType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="НадписьСубсчет"/>
+                <xs:attribute type="xs:string" name="Субсчет"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ОстаткиДСБезГОType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ФразаОстатокДСНаНачалоПериода" use="optional"/>
+                <xs:attribute type="xs:string" name="Валюта" use="optional"/>
+                <xs:attribute type="xs:string" name="НОДСиГО" use="optional"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокНКНаНачалоПериода" use="optional"/>
+                <xs:attribute type="xs:string" name="НОНК" use="optional"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокДСНаКонецПериода" use="optional"/>
+                <xs:attribute type="xs:string" name="КОДСиГО" use="optional"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокНКНаКонецПериода" use="optional"/>
+                <xs:attribute type="xs:string" name="КОНК" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ОстаткиДСType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ФразаОстатокДСНаНачалоПериода"/>
+                <xs:attribute type="xs:string" name="Валюта"/>
+                <xs:attribute type="xs:string" name="НОДСиГО"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокГО"/>
+                <xs:attribute type="xs:string" name="НОГО"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокОверГО"/>
+                <xs:attribute type="xs:string" name="НООверГО"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокНКНаНачалоПериода"/>
+                <xs:attribute type="xs:string" name="НОНК"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокДСНаКонецПериода"/>
+                <xs:attribute type="xs:string" name="КОДСиГО"/>
+                <xs:attribute type="xs:string" name="КОГО"/>
+                <xs:attribute type="xs:string" name="КООверГО"/>
+                <xs:attribute type="xs:string" name="ФразаОстатокНКНаКонецПериода"/>
+                <xs:attribute type="xs:string" name="КОНК"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияДСПоОперациямЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата" use="optional"/>
+                <xs:attribute type="xs:string" name="Классификатор" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаЗачисления" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаСписания" use="optional"/>
+                <xs:attribute type="xs:string" name="НДС" use="optional"/>
+                <xs:attribute type="xs:string" name="ГО" use="optional"/>
+                <xs:attribute type="xs:string" name="ДМ" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+                <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+                <xs:attribute type="xs:string" name="ПромКлиринг" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияДСПоОперациямЦБЖType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата"/>
+                <xs:attribute type="xs:string" name="Классификатор"/>
+                <xs:attribute type="xs:float" name="СуммаЗачисления"/>
+                <xs:attribute type="xs:float" name="СуммаСписания"/>
+                <xs:attribute type="xs:string" name="НДС"/>
+                <xs:attribute type="xs:string" name="ГО"/>
+                <xs:attribute type="xs:string" name="ДМ"/>
+                <xs:attribute type="xs:string" name="Биржа"/>
+                <xs:attribute type="xs:string" name="Примечание"/>
+                <xs:attribute type="xs:string" name="ПромКлиринг"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияДСПоОперациямЦБЖДеньType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата"/>
+                <xs:attribute type="xs:string" name="Итого"/>
+                <xs:attribute type="xs:string" name="СуммаЗачисления"/>
+                <xs:attribute type="xs:string" name="СуммаСписания"/>
+                <xs:attribute type="xs:string" name="НДС"/>
+                <xs:attribute type="xs:string" name="КО"/>
+                <xs:attribute type="xs:string" name="ГО"/>
+                <xs:attribute type="xs:string" name="ДМ"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ИтогДвиженияДСПоОперациямЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ИтогоПоВалюте"/>
+                <xs:attribute type="xs:string" name="Валюта"/>
+                <xs:attribute type="xs:string" name="СуммаЗачисления"/>
+                <xs:attribute type="xs:string" name="СуммаСписания"/>
+                <xs:attribute type="xs:string" name="НДС"/>
+                <xs:attribute type="xs:string" name="КО"/>
+                <xs:attribute type="xs:string" name="ГО"/>
+                <xs:attribute type="xs:string" name="ДМ"/>
+                <xs:attribute type="xs:string" name="ЗадолженностьКлиентаПередКомпанией"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаТаблДвижДСПоОперациямЦБType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="ДеталиДвиженияДСПоОперациямЦБType" name="ДеталиДвиженияДСПоОперациямЦБ" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ДеталиДвиженияДСПоОперациямЦБЖType" name="ДеталиДвиженияДСПоОперациямЦБЖ"/>
+            <xs:element type="ДеталиДвиженияДСПоОперациямЦБЖДеньType" name="ДеталиДвиженияДСПоОперациямЦБЖДень"/>
+            <xs:element type="ИтогДвиженияДСПоОперациямЦБType" name="ИтогДвиженияДСПоОперациямЦБ"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="Валюта"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвиженияДСПоОперациямЦБType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="ОстаткиДСБезГОType" name="ОстаткиДСБезГО"/>
+            <xs:element type="ШапкаТаблДвижДСПоОперациямЦБType" name="ШапкаТаблДвижДСПоОперациямЦБ" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвиженияДСПоОперациямType">
+        <xs:sequence>
+            <xs:element type="ШапкаДвиженияДСПоОперациямЦБType" name="ШапкаДвиженияДСПоОперациямЦБ"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвиженияДСОвернайтType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Заголовок"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияДСОвернайтType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Дата" use="optional"/>
+                <xs:attribute type="xs:string" name="ТипОперации" use="optional"/>
+                <xs:attribute type="xs:string" name="СрокЗайма" use="optional"/>
+                <xs:attribute type="xs:string" name="Процент" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+                <xs:attribute type="xs:string" name="ДатаСовершения" use="optional"/>
+                <xs:attribute type="xs:string" name="Погашен" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ИтогДвиженияДСОвернайтType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ИтогоПоВалюте"/>
+                <xs:attribute type="xs:string" name="Валюта"/>
+                <xs:attribute type="xs:string" name="СуммаРасход"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаРасход"/>
+                <xs:attribute type="xs:string" name="СуммаПриход"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаПриход"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаТаблицыЗаймыОвернайтType">
+        <xs:sequence>
+            <xs:element type="ДеталиДвиженияДСОвернайтType" name="ДеталиДвиженияДСОвернайт" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ИтогДвиженияДСОвернайтType" name="ИтогДвиженияДСОвернайт"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Валюта"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвиженияДСЗаймыType">
+        <xs:sequence>
+            <xs:element type="ШапкаДвиженияДСОвернайтType" name="ШапкаДвиженияДСОвернайт"/>
+            <xs:element type="ШапкаТаблицыЗаймыОвернайтType" name="ШапкаТаблицыЗаймыОвернайт"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияДССборыType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Классификатор" use="optional"/>
+                <xs:attribute type="xs:string" name="Сумма" use="optional"/>
+                <xs:attribute type="xs:string" name="НДС" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияДССборыЖType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Классификатор" use="optional"/>
+                <xs:attribute type="xs:string" name="Сумма" use="optional"/>
+                <xs:attribute type="xs:string" name="НДС" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ИтогДвиженияДССборыType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ИтогоПоВалюте"/>
+                <xs:attribute type="xs:string" name="Валюта"/>
+                <xs:attribute type="xs:string" name="Сумма"/>
+                <xs:attribute type="xs:string" name="НДС"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаТаблицыНачисленныеСборыType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="ДеталиДвиженияДССборыType" name="ДеталиДвиженияДССборы" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ДеталиДвиженияДССборыЖType" name="ДеталиДвиженияДССборыЖ"/>
+            <xs:element type="ИтогДвиженияДССборыType" name="ИтогДвиженияДССборы"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="Валюта"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвиженияДССборыType">
+        <xs:sequence>
+            <xs:element type="ШапкаТаблицыНачисленныеСборыType" name="ШапкаТаблицыНачисленныеСборы"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвижениеДСType">
+        <xs:sequence>
+            <xs:element type="ШапкаДвиженияДСПоОперациямType" name="ШапкаДвиженияДСПоОперациям"/>
+            <xs:element type="ШапкаДвиженияДСЗаймыType" name="ШапкаДвиженияДСЗаймы"/>
+            <xs:element type="ШапкаДвиженияДССборыType" name="ШапкаДвиженияДССборы"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ДеталиСделкиОвернайтЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="ДатаОперации" use="optional"/>
+                <xs:attribute type="xs:string" name="НомерСделки" use="optional"/>
+                <xs:attribute type="xs:string" name="ВремяОперации" use="optional"/>
+                <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                <xs:attribute type="xs:string" name="СрокЗайма" use="optional"/>
+                <xs:attribute type="xs:string" name="Ставка" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="Место" use="optional"/>
+                <xs:attribute type="xs:string" name="ДатаЗаключения" use="optional"/>
+                <xs:attribute type="xs:string" name="ДатаИсполнения" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ИтогСделкиОвернайтЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Итого"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаРасход"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаПриход"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиОвернайтЦБType">
+        <xs:sequence>
+            <xs:element type="ДеталиСделкиОвернайтЦБType" name="ДеталиСделкиОвернайтЦБ" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ИтогСделкиОвернайтЦБType" name="ИтогСделкиОвернайтЦБ"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ПодвалСделкиВалютныеПарыДатаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата"/>
+                <xs:attribute type="xs:string" name="НомерСделки"/>
+                <xs:attribute type="xs:dateTime" name="Время"/>
+                <xs:attribute type="xs:float" name="ЦенаПриход"/>
+                <xs:attribute type="xs:string" name="КоличествоПриход"/>
+                <xs:attribute type="xs:float" name="СуммаПриход"/>
+                <xs:attribute type="xs:float" name="ЦенаРасход"/>
+                <xs:attribute type="xs:string" name="КоличествоРасход"/>
+                <xs:attribute type="xs:float" name="СуммаРасход"/>
+                <xs:attribute type="xs:dateTime" name="ДатаСовершенияФакт"/>
+                <xs:attribute type="xs:dateTime" name="ВремяСовершенияФакт"/>
+                <xs:attribute type="xs:string" name="типСделки"/>
+                <xs:attribute type="xs:string" name="ДатаПоставкиФакт"/>
+                <xs:attribute type="xs:string" name="Биржа"/>
+                <xs:attribute type="xs:string" name="ОплатаСоСвоегоСчета"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСделкиВалютныеПарыЦББезРепоType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ"/>
+                <xs:attribute type="xs:string" name="КоличествоПриход"/>
+                <xs:attribute type="xs:string" name="СуммаПриход"/>
+                <xs:attribute type="xs:string" name="КоличествоРасход"/>
+                <xs:attribute type="xs:string" name="СуммаРасход"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиВалютныеПарыЦБType">
+        <xs:sequence>
+            <xs:element type="ПодвалСделкиВалютныеПарыДатаType" name="ПодвалСделкиВалютныеПарыДата" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="ПодвалСделкиВалютныеПарыЦББезРепоType" name="ПодвалСделкиВалютныеПарыЦББезРепо"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ЦБ"/>
+        <xs:attribute type="xs:string" name="Валюта1"/>
+        <xs:attribute type="xs:string" name="Валюта2"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиВалютныеПарыВалютаType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиВалютныеПарыЦБType" name="ШапкаСделкиВалютныеПарыЦБ" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ШапкаСделкиВалютныеПарыИнструментType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиВалютныеПарыВалютаType" name="ШапкаСделкиВалютныеПарыВалюта"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиОвернайтЦБType" name="ШапкаСделкиОвернайтЦБ"/>
+            <xs:element type="ШапкаСделкиВалютныеПарыИнструментType" name="ШапкаСделкиВалютныеПарыИнструмент"/>
+            <xs:element type="ШапкаСделкиАкцииИнструментType" name="ШапкаСделкиАкцииИнструмент"/>
+            <xs:element type="НезавершенныеСделкиШапкаType" name="НезавершенныеСделкиШапка"/>
+            <xs:element type="ЗаголовокПортфельType" name="ЗаголовокПортфель"/>
+            <xs:element type="ШапкаДвиженияИОстаткиЦБType" name="ШапкаДвиженияИОстаткиЦБ"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+
+    <xs:complexType name="ПодвалСделкиОблигацииДатаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата"/>
+                <xs:attribute type="xs:string" name="НомерСделки"/>
+                <xs:attribute type="xs:dateTime" name="Время"/>
+                <xs:attribute type="xs:int" name="КоличествоПриход"/>
+                <xs:attribute type="xs:float" name="ЦенаПриход"/>
+                <xs:attribute type="xs:float" name="СуммаПриход"/>
+                <xs:attribute type="xs:float" name="НКДПриход"/>
+                <xs:attribute type="xs:int" name="КоличествоРасход"/>
+                <xs:attribute type="xs:float" name="ЦенаРасход"/>
+                <xs:attribute type="xs:float" name="СуммаРасход"/>
+                <xs:attribute type="xs:float" name="НКДРасход"/>
+                <xs:attribute type="xs:string" name="ВалютаЦены"/>
+                <xs:attribute type="xs:string" name="ВалютаПлатежа"/>
+                <xs:attribute type="xs:dateTime" name="ДатаСовершенияФакт"/>
+                <xs:attribute type="xs:string" name="типСделки"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПлатежаФакт"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПоставкиФакт"/>
+                <xs:attribute type="xs:string" name="Биржа"/>
+                <xs:attribute type="xs:string" name="ОплатаСоСвоегоСчета"/>
+                <xs:attribute type="xs:string" name="Примечание"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСделкиОблигацииЦББезРепоType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ"/>
+                <xs:attribute type="xs:string" name="СуммаПриход"/>
+                <xs:attribute type="xs:string" name="НКДПриход"/>
+                <xs:attribute type="xs:string" name="СуммаРасход"/>
+                <xs:attribute type="xs:string" name="НКДРасход"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиОблигацииЦБType">
+        <xs:sequence>
+            <xs:element type="ПодвалСделкиОблигацииДатаType" name="ПодвалСделкиОблигацииДата"/>
+            <xs:element type="ПодвалСделкиОблигацииЦББезРепоType" name="ПодвалСделкиОблигацииЦББезРепо"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ЦБ"/>
+        <xs:attribute type="xs:string" name="НомерЦБ"/>
+        <xs:attribute type="xs:string" name="ISIN"/>
+        <xs:attribute type="xs:string" name="Эмитент"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиОблигацииВалютаType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиОблигацииЦБType" name="ШапкаСделкиОблигацииЦБ" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ВалютаЦены"/>
+        <xs:attribute type="xs:string" name="ВалютаПлатежа"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиОблигацииИнструментType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиОблигацииВалютаType" name="ШапкаСделкиОблигацииВалюта" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+
+    <xs:complexType name="ДеталиСделкиФьючерсыType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Дата"/>
+                <xs:attribute type="xs:string" name="НомерСделки"/>
+                <xs:attribute type="xs:string" name="Время"/>
+                <xs:attribute type="xs:string" name="КолН"/>
+                <xs:attribute type="xs:string" name="КупленоКоличество"/>
+                <xs:attribute type="xs:string" name="КупленоЦена"/>
+                <xs:attribute type="xs:string" name="ПроданоКоличество"/>
+                <xs:attribute type="xs:string" name="ПроданоЦена"/>
+                <xs:attribute type="xs:string" name="КолК"/>
+                <xs:attribute type="xs:string" name="Маржа"/>
+                <xs:attribute type="xs:string" name="ТипСделки"/>
+                <xs:attribute type="xs:string" name="ДатаСовершения"/>
+                <xs:attribute type="xs:string" name="ВремяСовершения"/>
+                <xs:attribute type="xs:string" name="Биржа"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСделкиФьючерсыДатаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Дата"/>
+                <xs:attribute type="xs:string" name="НомерСделки"/>
+                <xs:attribute type="xs:string" name="Время"/>
+                <xs:attribute type="xs:string" name="КолН"/>
+                <xs:attribute type="xs:string" name="КупленоКоличество"/>
+                <xs:attribute type="xs:string" name="КупленоЦена"/>
+                <xs:attribute type="xs:string" name="ПроданоКоличество"/>
+                <xs:attribute type="xs:string" name="ПроданоЦена"/>
+                <xs:attribute type="xs:string" name="КолК"/>
+                <xs:attribute type="xs:string" name="Маржа"/>
+                <xs:attribute type="xs:string" name="ТипСделки"/>
+                <xs:attribute type="xs:string" name="ДатаСовершения"/>
+                <xs:attribute type="xs:string" name="ВремяСовершения"/>
+                <xs:attribute type="xs:string" name="Биржа"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСделкиФьючерсыЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ"/>
+                <xs:attribute type="xs:string" name="Маржа"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСделкиФьючерсыИнструментType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Маржа"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиФьючерсыЦБType">
+        <xs:sequence>
+            <xs:element type="ДеталиСделкиФьючерсыType" name="ДеталиСделкиФьючерсы" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="ПодвалСделкиФьючерсыДатаType" name="ПодвалСделкиФьючерсыДата"/>
+            <xs:element type="ПодвалСделкиФьючерсыЦБType" name="ПодвалСделкиФьючерсыЦБ"/>
+            <xs:element type="ПодвалСделкиФьючерсыИнструментType" name="ПодвалСделкиФьючерсыИнструмент"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ЦБ"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиФьючерсыВалютаType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиФьючерсыЦБType" name="ШапкаСделкиФьючерсыЦБ" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Валюта"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиФьючерсыИнструментType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиФьючерсыВалютаType" name="ШапкаСделкиФьючерсыВалюта" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+
+    <xs:complexType name="ШапкаСделкиАкцииИнструментType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиАкцииВалютаType" name="ШапкаСделкиАкцииВалюта" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="ШапкаСделкиОвернайтЦБType" name="ШапкаСделкиОвернайтЦБ"/>
+            <xs:element type="ШапкаСделкиВалютныеПарыИнструментType" name="ШапкаСделкиВалютныеПарыИнструмент"/>
+
+            <xs:element type="ШапкаСделкиОблигацииИнструментType" name="ШапкаСделкиОблигацииИнструмент"/>
+            <xs:element type="ШапкаСделкиФьючерсыИнструментType" name="ШапкаСделкиФьючерсыИнструмент"/>
+            <xs:element type="НезавершенныеСделкиШапкаType" name="НезавершенныеСделкиШапка"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+
+    <xs:complexType name="ШапкаСделкиАкцииВалютаType">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиАкцииЦБType" name="ШапкаСделкиАкцииЦБ" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="ШапкаСделкиАкцииВалютаType" name="ШапкаСделкиАкцииВалюта" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ВалютаЦены" use="optional"/>
+        <xs:attribute type="xs:string" name="ВалютаПлатежа" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="ШапкаСделкиАкцииЦБType">
+        <xs:sequence>
+            <xs:element type="ДеталиСделкиАкцииType" name="ДеталиСделкиАкции" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ПодвалСделкиАкцииДатаType" name="ПодвалСделкиАкцииДата"/>
+            <xs:element type="ПодвалСделкиАкцииЦББезРепоType" name="ПодвалСделкиАкцииЦББезРепо"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+        <xs:attribute type="xs:string" name="НомерЦБ" use="optional"/>
+        <xs:attribute type="xs:string" name="ISIN" use="optional"/>
+        <xs:attribute type="xs:string" name="Эмитент" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="ДеталиСделкиАкцииType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата" use="optional"/>
+                <xs:attribute type="xs:string" name="НомерСделки" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="Время" use="optional"/>
+                <xs:attribute type="xs:string" name="КоличествоПриход" use="optional"/>
+                <xs:attribute type="xs:float" name="ЦенаПриход" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="КоличествоРасход" use="optional"/>
+                <xs:attribute type="xs:float" name="ЦенаРасход" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="ВалютаЦены" use="optional"/>
+                <xs:attribute type="xs:string" name="ВалютаПлатежа" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаСовершенияФакт" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ВремяСовершенияФакт" use="optional"/>
+                <xs:attribute type="xs:string" name="типСделки" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПлатежаФакт" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПоставкиФакт" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+                <xs:attribute type="xs:string" name="ОплатаСоСвоегоСчета" use="optional"/>
+                <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ПодвалСделкиАкцииДатаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата" use="optional"/>
+                <xs:attribute type="xs:string" name="НомерСделки" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="Время" use="optional"/>
+                <xs:attribute type="xs:string" name="КоличествоПриход" use="optional"/>
+                <xs:attribute type="xs:float" name="ЦенаПриход" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="КоличествоРасход" use="optional"/>
+                <xs:attribute type="xs:float" name="ЦенаРасход" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="ВалютаЦены" use="optional"/>
+                <xs:attribute type="xs:string" name="ВалютаПлатежа" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаСовершенияФакт" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ВремяСовершенияФакт" use="optional"/>
+                <xs:attribute type="xs:string" name="типСделки" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПлатежаФакт" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПоставкиФакт" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+                <xs:attribute type="xs:string" name="ОплатаСоСвоегоСчета" use="optional"/>
+                <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСделкиАкцииЦББезРепоType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаРасход" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="ДеталиНезавершенныеСделкиType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата" use="optional"/>
+                <xs:attribute type="xs:string" name="Номер" use="optional"/>
+                <xs:attribute type="xs:string" name="КоличествоПокупка" use="optional" default="0"/>
+                <xs:attribute type="xs:string" name="ЦенаПокупка" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаПокупка" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПлатежаПокупка" use="optional"/>
+                <xs:attribute type="xs:float" name="НКДПокупка" use="optional"/>
+                <xs:attribute type="xs:string" name="КоличествоПродажа" use="optional" default="0"/>
+                <xs:attribute type="xs:string" name="ЦенаПродажа" use="optional"/>
+                <xs:attribute type="xs:float" name="СуммаПродажа" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПлатежаПродажа" use="optional"/>
+                <xs:attribute type="xs:float" name="НКДПродажа" use="optional"/>
+                <xs:attribute type="xs:string" name="КроссКурсВалюта" use="optional"/>
+                <xs:attribute type="xs:string" name="ТипСделки" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаСовершенияФакт" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ВремяСовершенияФакт" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПлатежа" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПоставки" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+                <xs:attribute type="xs:string" name="ОплатаСоСвоегоСчета" use="optional"/>
+                <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалНезавершенныеСделкиЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПокупка" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПлатежаПокупка" use="optional"/>
+                <xs:attribute type="xs:string" name="НКДПокупка" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПродажа" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПлатежаПродажа" use="optional"/>
+                <xs:attribute type="xs:string" name="НКДПродажа" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаНезавершенныеСделкиЦБType">
+        <xs:sequence>
+            <xs:element type="ДеталиНезавершенныеСделкиType" name="ДеталиНезавершенныеСделки" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ПодвалНезавершенныеСделкиЦБType" name="ПодвалНезавершенныеСделкиЦБ"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+        <xs:attribute type="xs:string" name="НомерЦБ" use="optional"/>
+        <xs:attribute type="xs:string" name="ISIN" use="optional"/>
+        <xs:attribute type="xs:string" name="Эмитент" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ШапкаНезавершенныеСделкиВалютаType">
+        <xs:sequence>
+            <xs:element type="ШапкаНезавершенныеСделкиЦБType" name="ШапкаНезавершенныеСделкиЦБ" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ВалютаЦены" use="optional"/>
+        <xs:attribute type="xs:string" name="ВалютаПлатежа" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ДеталиВалютныеПарыНезавершенныеType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="Дата"/>
+                <xs:attribute type="xs:string" name="Номер"/>
+                <xs:attribute type="xs:float" name="ЦенаПокупка"/>
+                <xs:attribute type="xs:int" name="КоличествоПокупка"/>
+                <xs:attribute type="xs:float" name="СуммаПокупка"/>
+                <xs:attribute type="xs:float" name="ЦенаПродажа"/>
+                <xs:attribute type="xs:int" name="КоличествоПродажа"/>
+                <xs:attribute type="xs:float" name="СуммаПродажа"/>
+                <xs:attribute type="xs:dateTime" name="ДатаСовершенияФакт"/>
+                <xs:attribute type="xs:dateTime" name="ВремяСовершенияФакт"/>
+                <xs:attribute type="xs:string" name="ТипСделки"/>
+                <xs:attribute type="xs:dateTime" name="ДатаПоставки"/>
+                <xs:attribute type="xs:string" name="Биржа"/>
+                <xs:attribute type="xs:string" name="ОплатаСоСвоегоСчета"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалВалютныеПарыНезавершенныеЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ"/>
+                <xs:attribute type="xs:string" name="КоличествоПокупка"/>
+                <xs:attribute type="xs:string" name="СуммаПокупка"/>
+                <xs:attribute type="xs:string" name="КоличествоПродажа"/>
+                <xs:attribute type="xs:string" name="СуммаПродажа"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаВалютныеПарыНезавершенныеЦБType">
+        <xs:sequence>
+            <xs:element type="ДеталиВалютныеПарыНезавершенныеType" name="ДеталиВалютныеПарыНезавершенные" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="ПодвалВалютныеПарыНезавершенныеЦБType" name="ПодвалВалютныеПарыНезавершенныеЦБ"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ЦБ"/>
+        <xs:attribute type="xs:string" name="Валюта1"/>
+        <xs:attribute type="xs:string" name="Валюта2"/>
+    </xs:complexType>
+
+    <xs:complexType name="ЗаголовокСекцииСделкиType" mixed="true">
+        <xs:sequence>
+            <xs:element type="ШапкаСделкиType" name="ШапкаСделки" minOccurs="0"/>
+            <xs:element type="НезавершенныеСделкиШапкаType" name="НезавершенныеСделкиШапка" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="ЗаголовокСекцииType" mixed="true">
+        <xs:sequence>
+            <xs:element type="xs:string" name="ШапкаВалютныеПарыНезавершенныеОтчет" minOccurs="0"/>
+            <xs:element type="ШапкаВалютныеПарыНезавершенныеЦБType" name="ШапкаВалютныеПарыНезавершенныеЦБ" minOccurs="0"/>
+            <xs:element type="КурсыВалютШапкаType" name="КурсыВалютШапка" minOccurs="0"/>
+            <xs:element type="ЗаголовокСекцииОбязательстваType" name="ЗаголовокСекцииОбязательства" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="ДеталиСделкиОвернайтЦБОстаткиType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:dateTime" name="ДатаОперации" use="optional"/>
+                <xs:attribute type="xs:string" name="НомерСделки" use="optional"/>
+                <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                <xs:attribute type="xs:string" name="СрокЗайма" use="optional"/>
+                <xs:attribute type="xs:string" name="Ставка" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаРасход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаПриход" use="optional"/>
+                <xs:attribute type="xs:string" name="Место" use="optional"/>
+                <xs:attribute type="xs:string" name="ДатаСовершения" use="optional"/>
+                <xs:attribute type="xs:string" name="ДатаИсполнения" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ИтогСделкиОвернайтЦБОстаткиType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Итого"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаРасход"/>
+                <xs:attribute type="xs:string" name="СуммаПроцентаПриход"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаСделкиОвернайтЦБОстаткиType">
+        <xs:sequence>
+            <xs:element type="ДеталиСделкиОвернайтЦБОстаткиType" name="ДеталиСделкиОвернайтЦБОстатки" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ИтогСделкиОвернайтЦБОстаткиType" name="ИтогСделкиОвернайтЦБОстатки"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="НезавершенныеСделкиШапкаType">
+        <xs:sequence>
+            <xs:element type="ШапкаНезавершенныеСделкиВалютаType" name="ШапкаНезавершенныеСделкиВалюта" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ЗаголовокСекцииType" name="ЗаголовокСекции"/>
+            <xs:element type="ШапкаСделкиОвернайтЦБОстаткиType" name="ШапкаСделкиОвернайтЦБОстатки"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="ПортфельИтогоСтрокаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ВидАктива" use="optional"/>
+                <xs:attribute type="xs:string" name="Валюта" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаНОВал" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаНОРуб" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаКОВал" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаКОРуб" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ВалютаType">
+        <xs:sequence>
+            <xs:element type="ПортфельИтогоСтрокаType" name="ПортфельИтогоСтрока" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ОбязательствоType" name="Обязательство" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Валюта" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ПортфельИтогоШапкаType">
+        <xs:sequence>
+            <xs:element type="ВалютаType" name="Валюта" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ЗаголовокСекцииПортфельИтогоType">
+        <xs:sequence>
+            <xs:element type="ПортфельИтогоШапкаType" name="ПортфельИтогоШапка"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="СуммаНОРуб"/>
+        <xs:attribute type="xs:string" name="СуммаКОРуб"/>
+        <xs:attribute type="xs:string" name="ИзменениеРуб"/>
+    </xs:complexType>
+    <xs:complexType name="КурсыВалютСтрокаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Валюта"/>
+                <xs:attribute type="xs:string" name="КурсНач"/>
+                <xs:attribute type="xs:string" name="КурсКон"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="КурсыВалютШапкаType">
+        <xs:sequence>
+            <xs:element type="КурсыВалютСтрокаType" name="КурсыВалютСтрока"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="ПериодНач"/>
+        <xs:attribute type="xs:string" name="ПериодКон"/>
+    </xs:complexType>
+    <xs:complexType name="ДеталиПортфель1Type">
+        <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+        <xs:attribute type="xs:string" name="ISINПортфеля" use="optional"/>
+        <xs:attribute type="xs:string" name="ТипЦБ" use="optional"/>
+        <xs:attribute type="xs:string" name="КоличествоНО" use="optional"/>
+        <xs:attribute type="xs:string" name="НОЦена" use="optional"/>
+        <xs:attribute type="xs:string" name="СуммаНКДНО" use="optional"/>
+        <xs:attribute type="xs:string" name="НОСумма" use="optional"/>
+        <xs:attribute type="xs:string" name="КоличествоКО" use="optional"/>
+        <xs:attribute type="xs:string" name="КОЦена" use="optional"/>
+        <xs:attribute type="xs:string" name="СуммаНКДКО" use="optional"/>
+        <xs:attribute type="xs:string" name="КОСумма" use="optional"/>
+        <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+        <xs:attribute type="xs:string" name="МестоХранения" use="optional"/>
+        <xs:attribute type="xs:string" name="Эмитент" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ИтогПортфель1Type">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="Итого" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаНКДНО" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаНО" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаНКДКО" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаКО" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаПортфельType">
+        <xs:sequence>
+            <xs:element type="ДеталиПортфель1Type" name="ДеталиПортфель1" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="ИтогПортфель1Type" name="ИтогПортфель1" minOccurs="0"/>
+            <xs:element type="xs:string" name="ШапкаВалютныеПарыНезавершенныеОтчет" minOccurs="0"/>
+            <xs:element type="ШапкаВалютныеПарыНезавершенныеЦБType" name="ШапкаВалютныеПарыНезавершенныеЦБ" minOccurs="0"/>
+            <xs:element type="ШапкаСделкиType" name="ШапкаСделки" minOccurs="0"/>
+            <xs:element type="НезавершенныеСделкиШапкаType" name="НезавершенныеСделкиШапка" minOccurs="0"/>
+            <xs:element type="КурсыВалютШапкаType" name="КурсыВалютШапка" minOccurs="0"/>
+            <xs:element type="ЗаголовокСекцииОбязательстваType" name="ЗаголовокСекцииОбязательства" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ОбязательстваСтрокаType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ПрефиксОбязательство" use="optional"/>
+                <xs:attribute type="xs:string" name="Обязательство" use="optional"/>
+                <xs:attribute type="xs:string" name="Валюта" use="optional"/>
+                <xs:attribute type="xs:string" name="Биржа" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаНачальныйОстаток" use="optional"/>
+                <xs:attribute type="xs:string" name="СуммаКонечныйОстаток" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ОбязательствоType">
+        <xs:sequence>
+            <xs:element type="ОбязательстваСтрокаType" name="ОбязательстваСтрока" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Валюта" use="optional"/>
+        <xs:attribute type="xs:string" name="Обязательство" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ОбязательстваШапкаType">
+        <xs:sequence>
+            <xs:element type="ВалютаType" name="Валюта" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ЗаголовокСекцииОбязательстваType">
+        <xs:sequence>
+            <xs:element type="ОбязательстваШапкаType" name="ОбязательстваШапка"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ЗаголовокПортфельType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="ЗаголовокСекцииПортфельИтогоType" name="ЗаголовокСекцииПортфельИтого"/>
+            <xs:element type="ЗаголовокСекцииType" name="ЗаголовокСекции"/>
+            <xs:element type="ШапкаПортфельType" name="ШапкаПортфель" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияИОстаткиЦБЖType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                <xs:attribute type="xs:string" name="Период" use="optional"/>
+                <xs:attribute type="xs:string" name="НО" use="optional"/>
+                <xs:attribute type="xs:string" name="Приход" use="optional"/>
+                <xs:attribute type="xs:string" name="Расход" use="optional"/>
+                <xs:attribute type="xs:string" name="КО" use="optional"/>
+                <xs:attribute type="xs:string" name="МХ" use="optional"/>
+                <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ДеталиДвиженияИОстаткиЦБType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                <xs:attribute type="xs:string" name="Период" use="optional"/>
+                <xs:attribute type="xs:string" name="НО" use="optional"/>
+                <xs:attribute type="xs:string" name="Приход" use="optional"/>
+                <xs:attribute type="xs:string" name="Расход" use="optional"/>
+                <xs:attribute type="xs:string" name="КО" use="optional"/>
+                <xs:attribute type="xs:string" name="МХ" use="optional"/>
+                <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ШапкаДвиженияИОстаткиЦБType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="ДеталиДвиженияИОстаткиЦБЖType" name="ДеталиДвиженияИОстаткиЦБЖ"/>
+            <xs:element name="ИтогЦБДвиженияИОстаткиЦБ">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="ЦБ" use="optional"/>
+                            <xs:attribute type="xs:string" name="Период" use="optional"/>
+                            <xs:attribute type="xs:string" name="НО" use="optional"/>
+                            <xs:attribute type="xs:string" name="Приход" use="optional"/>
+                            <xs:attribute type="xs:string" name="Расход" use="optional"/>
+                            <xs:attribute type="xs:string" name="КО" use="optional"/>
+                            <xs:attribute type="xs:string" name="МХ" use="optional"/>
+                            <xs:attribute type="xs:string" name="Примечание" use="optional"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element type="ДеталиДвиженияИОстаткиЦБType" name="ДеталиДвиженияИОстаткиЦБ" maxOccurs="unbounded"
+                        minOccurs="0"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="Заголовок"/>
+    </xs:complexType>
+    <xs:complexType name="ПодвалType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="ТекущаяДата"/>
+                <xs:attribute type="xs:string" name="Руководитель"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ПодвалСноскиType">
+        <xs:sequence>
+            <xs:element type="ПодвалType" name="Подвал"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="БрокерскийОтчетType">
+        <xs:sequence>
+            <xs:element type="ШапкаType" name="Шапка"/>
+            <xs:element type="ШапкаПериодType" name="ШапкаПериод"/>
+            <xs:element type="ШапкаКлиентType" name="ШапкаКлиент"/>
+            <xs:element type="ШапкаГенСогType" name="ШапкаГенСог"/>
+            <xs:element type="ШапкаСубсчетType" name="ШапкаСубсчет"/>
+            <xs:element type="ШапкаДвижениеДСType" name="ШапкаДвижениеДС"/>
+            <xs:element type="ЗаголовокСекцииСделкиType" name="ЗаголовокСекции"/>
+            <xs:element type="ЗаголовокПортфельType" name="ЗаголовокПортфель"/>
+            <xs:element type="ШапкаДвиженияИОстаткиЦБType" name="ШапкаДвиженияИОстаткиЦБ"/>
+            <xs:element type="ПодвалСноскиType" name="ПодвалСноски"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

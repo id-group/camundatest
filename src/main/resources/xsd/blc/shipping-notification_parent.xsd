@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://cherkizovo-group.ru/ERP/WMSShippingNotification" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="common.xsd" />
+
+  <xs:element name="MT_ShippingNotification" type="wms:MT_ShippingNotificationType" xmlns:wms="http://cherkizovo-group.ru/ERP/WMSShippingNotification"/>
+  <xs:complexType name="MT_ShippingNotificationType">
+    <xs:sequence>
+      <xs:element ref="INTCODE"/>
+      <xs:element ref="SDELIVP"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
