@@ -74,6 +74,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <executable>true</executable>
+                    <jvmArguments>-Dfile.encoding=UTF8</jvmArguments>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -133,7 +135,7 @@
                         <javaAgentClass>lombok.launch.Agent</javaAgentClass>
                     </compilerArguments>
                     <encoding>UTF-8</encoding>
-                    <fork>true</fork>
+                    <fork>false</fork>
                 </configuration>
                 <dependencies>
                     <dependency>
